@@ -1,0 +1,21 @@
+DWA Knowledge Check
+
+Q1: Managing Complexity
+- Adaptability
+- Readability
+- Scaling
+
+Q2:
+- Can't make bug free code
+- Lack of documentation
+- Evolution of coding (styles, way of coding, new features, changing how older features operate)
+
+
+Q3:
+- Error handling. Catching errors at appropriate levels.
+
+Q4:
+- Increased software failure
+- Devs take longer to understand code thanks to poor Readability
+- Code becomes unmaintainable
+- It becomes harder to add new features
