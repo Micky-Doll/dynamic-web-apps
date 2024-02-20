@@ -8,3 +8,19 @@ These mutations can be caused by various actions, such as user interactions, Jav
 or updates from external sources. For example, when a user clicks a button that triggers a JavaScript
 function to add a new element to the page, it causes a DOM mutation. Similarly, if data from a server is received and
 used to update the content of a web page, it also results in DOM mutations.
+
+Questions 1:
+Event handlers attached to elements are preserved; things that persist after
+refreshing the page
+
+Question 4:
+Data Binding, many frameworks have data binding mechanisms that automate the
+synchronization of data between the model (application state) and the view.
+
+A list made by a user gets updated. When it's updated something else needs to changes on 
+the page. 
+One way data binding means data can only flow down, two way data binding means data
+can only flow down.
+Flowing data up or down the component tree? Components build within components.
+
+Deterministic - always determinable, when we run the thing we always expect the same result.

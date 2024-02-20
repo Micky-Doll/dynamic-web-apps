@@ -1,0 +1,7 @@
+DWA11
+Reducer does not edit state it creates a copy of a new state and saves it.
+Reducers.js is very simple, it's just adjusting state by one and resetting to zero.
+Callback - a function that runs every time the state is updated.
+Action.js should be a list of words
+Reducers.js is where those actions should be acted upon
+What is an eNum?
