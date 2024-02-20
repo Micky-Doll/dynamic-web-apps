@@ -1,0 +1,17 @@
+What are DOM Mutations?
+
+DOM mutations refer to changes that occur in the Document Object Model (DOM) of a web page. 
+The DOM is a representation of the HTML elements on a web page, and it can be manipulated using JavaScript. 
+DOM mutations occur when the structure or content of the DOM is modified, such as adding, removing, or modifying elements or attributes.
+
+These mutations can be caused by various actions, such as user interactions, JavaScript code execution, or
+updates from external sources. For example, when a user clicks a button that triggers a JavaScript function
+to add a new element to the page, it causes a DOM mutation. Similarly, if data from a server is received and
+used to update the content of a web page, it also results in DOM mutations.
+
+Questions:
+1.
+2.
+3.
+4.
+5.
