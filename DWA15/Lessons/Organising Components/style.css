@@ -1,0 +1,53 @@
+/**
+Challenge: 
+
+- Add an `ul` inside the Header's `nav` and create
+  the following `li`s: "Pricing", "About", & "Contact"
+- Using flexbox, line up the nav items horizontally, and
+  put them inline with the React logo.
+- Change the image styling to happen in CSS instead of in-line
+  For practice, add a new class to the image in order to style it
+*/
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  width: 60px;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+}
+
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-items > li {
+  padding: 10px;
+  font-weight: bold;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+ol {
+  padding-left: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+  margin-top: 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
