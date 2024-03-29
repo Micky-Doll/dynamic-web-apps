@@ -136,9 +136,7 @@ function App() {
             <>
               <h1>What's Hot</h1>
               <div className="Carousel">
-                <Carousel
-                //  HandlePreviewClick={HandlePreviewClick}
-                />
+                <Carousel />
               </div>
               <h1>Something For Everyone</h1>
               <PreviewSorting />

@@ -2,11 +2,22 @@ import { useState, useEffect } from "react";
 import { supabase } from "./SignIn";
 import { UseContextValue } from "./Context";
 
+/**
+ * Component to display episodes.
+ * @param {object} props - Component props
+ * @param {string} props.email - User email
+ * @param {string} props.favouriteSeasonTitle - Title of the favourite season
+ * @param {string} props.favouriteShowTitle - Title of the favourite show
+ * @param {Function} props.HandleAudioPlay - Function to handle audio playback
+ * @returns {JSX.Element} Episodes component
+ */
 export default function Episodes(props) {
   const { phaseState, favourite } = UseContextValue();
 
-  // fetching data from supabase
+  // State to store favourite data fetched from supabase
   const [favouriteData, setFavouriteData] = useState([]);
+
+  // Fetch favourite data from supabase when component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,16 +35,30 @@ export default function Episodes(props) {
       }
     };
 
-    fetchData(); // Call the function to fetch data when the component mounts
+    fetchData();
   }, []);
 
+  // Map episode elements
   const episodeElements = phaseState.Episode.map((item) => {
     const [isButtonClicked, setIsButtonClicked] = useState("NotClicked");
 
+    /**
+     * Checks if episode is already added to favourites.
+     * @param {string} episodeTitle - Title of the episode
+     * @returns {boolean} True if episode is in favourites, false otherwise
+     */
     function HandleAddingToFavourites(episodeTitle) {
       return favouriteData.some((book) => book.EpisodeTitle === episodeTitle);
     }
 
+    /**
+     * Handles storing episode in favourites.
+     * @param {string} title - Title of the episode
+     * @param {string} description - Description of the episode
+     * @param {number} episodeNumber - Episode number
+     * @param {string} file - File URL of the episode
+     * @returns {Promise<void>}
+     */
     const HandleFavouriteStoring = async (
       title,
       description,
@@ -64,7 +89,7 @@ export default function Episodes(props) {
         if (error) {
           console.error("Error inserting data:", error.message);
         } else {
-          // console.log('Data inserted successfully:', data);
+          console.log("Data inserted successfully:", data);
         }
       } catch (error) {
         console.error("Error inserting data:", error.message);

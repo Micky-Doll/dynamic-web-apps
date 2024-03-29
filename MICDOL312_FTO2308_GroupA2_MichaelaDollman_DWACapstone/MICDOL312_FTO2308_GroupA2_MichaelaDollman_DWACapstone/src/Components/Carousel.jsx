@@ -1,6 +1,10 @@
 import { UseContextValue } from "./Context";
 import { GenderToString } from "./Root";
 
+/**
+ * Carousel component to display preview elements.
+ * @returns {JSX.Element} React component
+ */
 export default function Carousel() {
   const {
     phaseState,
@@ -11,6 +15,15 @@ export default function Carousel() {
     setShowDescription,
   } = UseContextValue();
 
+  /**
+   * Handles click on a preview item.
+   * Fetches data for the clicked item and updates state accordingly.
+   * @param {string} showTitle - Title of the show
+   * @param {string} showId - ID of the show
+   * @param {string} showImg - Image URL of the show
+   * @param {string} showDescription - Description of the show
+   * @returns {Promise<void>}
+   */
   async function handlePreviewClick(
     showTitle,
     showId,
@@ -43,6 +56,10 @@ export default function Carousel() {
     }
   }
 
+  /**
+   * Renders preview elements based on phase state.
+   * @type {JSX.Element[]}
+   */
   const previewElements = phaseState.DefaultPreview.slice(17, 30).map(
     (item) => {
       const updatedDate = new Date(item.updated);
