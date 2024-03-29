@@ -1,6 +1,10 @@
 import { GenderToString } from "./Root";
 import { UseContextValue } from "./Context";
 
+/**
+ * Component to display preview items.
+ * @returns {JSX.Element} Preview component
+ */
 export function Preview() {
   const {
     phaseState,
@@ -11,6 +15,14 @@ export function Preview() {
     setShowDescription,
   } = UseContextValue();
 
+  /**
+   * Handles click event on a preview item.
+   * @param {string} showTitle - Title of the show
+   * @param {string} showId - ID of the show
+   * @param {string} showImg - Image URL of the show
+   * @param {string} showDescript - Description of the show
+   * @returns {void}
+   */
   async function HandlePreviewClick(showTitle, showId, showImg, showDescript) {
     if (showId) {
       try {
@@ -65,9 +77,17 @@ export function Preview() {
   );
 }
 
+/**
+ * Component for the back button.
+ * @returns {JSX.Element} BackButton component
+ */
 export function BackButton() {
   const { phase, setPhase } = UseContextValue();
 
+  /**
+   * Handles click event on the back button.
+   * @returns {void}
+   */
   function HandleBack() {
     if (phase === "seasonPhase") {
       setPhase("previewPhase");

@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { UseContextValue } from "./Context";
 
+/**
+ * Component for searching and sorting previews.
+ * @returns {JSX.Element} SearchSorting component
+ */
 export function SearchSorting() {
   const { phaseState, setPhaseState, search, setSearch } = UseContextValue();
 
@@ -24,9 +28,17 @@ export function SearchSorting() {
   );
 }
 
+/**
+ * Component for sorting previews by different criteria.
+ * @returns {JSX.Element} PreviewSorting component
+ */
 export function PreviewSorting() {
   const { phaseState, setPhaseState } = UseContextValue();
 
+  /**
+   * Sorts previews by selected gender.
+   * @param {Event} event - The event object
+   */
   function SortByGender(event) {
     const selectedGenre = parseInt(event.target.value);
     setPhaseState((prevPhase) => ({
@@ -37,6 +49,9 @@ export function PreviewSorting() {
     }));
   }
 
+  /**
+   * Sorts previews in ascending order by title.
+   */
   function sortByAscending() {
     setPhaseState((prevPhase) => ({
       ...prevPhase,
@@ -45,6 +60,10 @@ export function PreviewSorting() {
       ),
     }));
   }
+
+  /**
+   * Sorts previews in descending order by title.
+   */
   function sortByDescending() {
     setPhaseState((prevPhase) => ({
       ...prevPhase,
@@ -53,6 +72,9 @@ export function PreviewSorting() {
       ),
     }));
   }
+  /**
+   * Sorts previews by latest update date.
+   */
   function sortByLatest() {
     setPhaseState((prevPhase) => ({
       ...prevPhase,
@@ -61,6 +83,9 @@ export function PreviewSorting() {
       ),
     }));
   }
+  /**
+   * Sorts previews by oldest update date.
+   */
   function sortByOldest() {
     setPhaseState((prevPhase) => ({
       ...prevPhase,

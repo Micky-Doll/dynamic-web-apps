@@ -1,3 +1,8 @@
+/**
+ * Converts numeric gender code to string representation.
+ * @param {number} gender - Numeric code representing the gender
+ * @returns {string} String representation of the gender
+ */
 export const GenderToString = (gender) => {
   switch (gender) {
     case 1:

@@ -13,11 +13,17 @@ import { SearchSorting } from "./Components/Sorting";
 import { PreviewSorting } from "./Components/Sorting";
 import "./Components/styles.css";
 
+/**
+ * Main application component.
+ * @returns {JSX.Element} App component
+ */
 function App() {
   const { userLogIn, phase, setPhase, phaseState, setPhaseState, favourite } =
     UseContextValue();
 
-  //Fetching Preview data and set PreviewPhase to fetched data then set Phase to Preview.
+  /**
+   * Fetches Preview data from the API and updates the application phase accordingly.
+   */
   React.useEffect(() => {
     fetch("https://podcast-api.netlify.app/shows")
       .then((res) => res.json())
@@ -36,13 +42,16 @@ function App() {
       });
   }, [phase]);
 
-  //Audio play
+  // State for controlling audio playback
   const [audioPlaying, setaudioPlaying] = React.useState({
     title: "",
     audio: "",
   });
 
-  //Collects episode details via attributes
+  /**
+   * Handles the playback of audio episodes.
+   * @param {Event} event The click event triggering the audio playback
+   */
   async function HandleAudioPlay(event) {
     const audioToPlay = event.target.id;
     const audioTitle = event.target.title;
@@ -80,13 +89,16 @@ function App() {
       if (error) {
         console.error("Error inserting data:", error.message);
       } else {
-        // console.log('Data inserted successfully:', data);
+        console.log("Data inserted successfully:", data);
       }
     } catch (error) {
       console.error("Error inserting data:", error.message);
     }
   }
 
+  /**
+   * Closes the mini player.
+   */
   function HandleMiniPlayClose() {
     const shouldClose = confirm("Are you sure you want to close miniplayer?");
     if (shouldClose) {

@@ -1,5 +1,9 @@
 import { UseContextValue } from "./Context";
 
+/**
+ * Component to display seasons.
+ * @returns {JSX.Element} Season component
+ */
 export default function Season() {
   const {
     phaseState,
@@ -10,6 +14,12 @@ export default function Season() {
     showImage,
   } = UseContextValue();
 
+  /**
+   * Handles click event on a season item.
+   * @param {string} seasonTitle - Title of the season
+   * @param {number} seasonId - ID of the season
+   * @returns {void}
+   */
   function HandleSeasonClick(seasonTitle, seasonId) {
     try {
       const seasonArray = phaseState.Season[seasonId].episodes;
@@ -27,6 +37,7 @@ export default function Season() {
     }
   }
 
+  // Map season elements
   const seasonElements = phaseState.Season.map((item) => {
     return (
       <button

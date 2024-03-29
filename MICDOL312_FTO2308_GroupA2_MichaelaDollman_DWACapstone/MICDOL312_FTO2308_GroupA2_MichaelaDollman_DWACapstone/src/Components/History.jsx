@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./SignIn";
 
+/**
+ * Component to display user's listen history.
+ * @param {object} props - Component props
+ * @param {string} props.email - User email
+ * @returns {JSX.Element} History component
+ */
 export default function History(props) {
   const [historyData, setHistoryData] = useState([]);
   const [state, setState] = useState("loading");
 
-  //Fetching data
+  /**
+   * Fetches listen history data from the database.
+   * @returns {void}
+   */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,6 +36,10 @@ export default function History(props) {
     fetchData(); // Call the function to fetch data when the component mounts
   }, [props.email]);
 
+  /**
+   * Handles resetting listen history.
+   * @returns {void}
+   */
   const handleReset = async () => {
     try {
       const { error } = await supabase
@@ -44,6 +57,7 @@ export default function History(props) {
     }
   };
 
+  // Map history elements
   const historyElements = historyData.map((item) => {
     const AddedDate = new Date(item.TimeStamp);
     return (

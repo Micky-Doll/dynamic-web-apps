@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./SignIn";
 
+/**
+ * Component to display user's favorite episodes.
+ * @param {object} props - Component props
+ * @param {string} props.email - User email
+ * @param {Function} props.HandleAudioPlay - Function to handle audio playback
+ * @returns {JSX.Element} Favorites component
+ */
 export default function Favorites(props) {
   const [favouriteData, setFavouriteData] = useState([]);
   const [state, setState] = useState("loading");
@@ -25,9 +32,14 @@ export default function Favorites(props) {
       }
     };
 
-    fetchData(); // Call the function to fetch data when the component mounts
+    fetchData();
   }, [favouriteData]);
 
+  /**
+   * Deletes a favorite episode from the database.
+   * @param {string} title - Title of the episode to be deleted
+   * @returns {Promise<void>}
+   */
   const handleDelete = async (title) => {
     setSortState("originData");
     const { data, error } = await supabase
@@ -40,17 +52,29 @@ export default function Favorites(props) {
       console.log(error);
     }
     if (data) {
+      // Handle success
     }
   };
 
+  /**
+   * Sorts favorite episodes in ascending order.
+   */
   function sortByAscending() {
     setSortState("sortByAscending");
     setSortPhase(favouriteData.sort((a, b) => b.Show.localeCompare(a.Show)));
   }
+
+  /**
+   * Sorts favorite episodes in descending order.
+   */
   function sortByDescending() {
     setSortState("sortByDescending");
     setSortPhase(favouriteData.sort((a, b) => a.Show.localeCompare(b.Show)));
   }
+
+  /**
+   * Sorts favorite episodes by latest addition.
+   */
   function sortByLatest() {
     setSortState("sortByLatest");
     setSortPhase(
@@ -59,6 +83,10 @@ export default function Favorites(props) {
       )
     );
   }
+
+  /**
+   * Sorts favorite episodes by oldest addition.
+   */
   function sortByOldest() {
     setSortState("sortByOldest");
     setSortPhase(
@@ -68,6 +96,7 @@ export default function Favorites(props) {
     );
   }
 
+  // Map favorite episode elements
   const favouriteElements = (
     sortState === "originData" ? favouriteData : sortPhase
   ).map((item) => {
